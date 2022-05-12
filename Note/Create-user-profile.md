@@ -33,4 +33,4 @@ spring:
 ```
 
 Thông tin config sẽ được cấu hình trong spring boot java như hình
-![image](20220505101811.png)  
+![image](../Image/20220505101811.png))  
