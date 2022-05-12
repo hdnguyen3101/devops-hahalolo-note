@@ -56,6 +56,8 @@ Mở Terminal hoặc Powershell trên Windows, sử dụng lệnh SSH với opti
 
 `ssh -L 8000:localhost:8888 root@10.10.15.87`
 
+Trong trường hợp bị trùng port thì thay đổi port 8000 thành port khác phù hợp hơn.
+
 ![Connect SSH Tunel](../Image/2022-05-12-11-25-55.png)
 
 Di chuyển tới thư mục Jupyter
@@ -84,3 +86,25 @@ Nhập token:
 
 Token auto generate khi chạy Jupyter notebook.
 ![token](../Image/2022-05-12-13-24-56.png)
+
+Trong trường hợp có nhiều user truy cập Jupyter cùng lúc sẽ phát sinh hiện tượng tự động chuyển port ở remote server.
+![Auto change port](../Image/2022-05-12-13-56-53.png)
+## Troubleshoot
+
+Ghi nhớ port sau khi thay đổi ở remote server và exit session SSH hiện tại bằng lệnh exit.
+
+Bấm `CTRL+C` sau đó nhấn `y`
+
+![Interrupt Jupyter](../Image/2022-05-12-14-04-41.png)
+
+Nhập lệnh `exit` để thoát session SSH
+
+![exit](../Image/2022-05-12-14-07-08.png)
+
+Sau đó thực hiện lại lệnh kết nối SSH Tunel với thay đổi port.
+
+`ssh -L 8000:localhost:8889 root@10.10.15.87`
+
+![Re-connect](../Image/2022-05-12-14-09-09.png)
+
+Rồi sau đó truy cập Jupyter như trên.
