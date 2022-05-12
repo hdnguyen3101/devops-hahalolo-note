@@ -58,6 +58,11 @@ Mở Powershell trên Windows, sử dụng lệnh SSH với optional -L để ch
 
 ![Connect SSH Tunel](../Image/2022-05-12-11-25-55.png)
 
+Di chuyển tới thư mục Jupyter
+`cd ../jupyter/`
+
+![jupyter](../Image/2022-05-12-13-20-37.png)
+
 ## After connect SSH, active virtual-environment and run Jupyter
 
 Dùng lệnh `source environment/bin/activate` để kích hoạt environment. Và chạy Jupyter notebook với optional --allow-root.
@@ -66,9 +71,12 @@ Dùng lệnh `source environment/bin/activate` để kích hoạt environment. V
 
 ## Use Browser connect to Jupyter Notebook
 
-Trên máy host nhập đường dẫn vào trình duyệt để dùng Jupter Notebook
+Trên máy host nhập đường dẫn vào trình duyệt để dùng Jupter Notebook.
 `http://localhost:8000/`
 
 ![Jupyter](../Image/2022-05-12-11-32-47.png)
 
-Nhập token: 98fe077a1fc19750280f513f87bf8ee7fd9ba2a4436bdd8f
+Nhập token:
+
+Token auto generate khi chạy Jupyter notebook.
+![token](../Image/2022-05-12-13-24-56.png)
