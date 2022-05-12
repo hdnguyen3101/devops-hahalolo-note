@@ -67,6 +67,10 @@ Di chuyển tới thư mục Jupyter
 
 Dùng lệnh `source environment/bin/activate` để kích hoạt environment. Và chạy Jupyter notebook với optional --allow-root.
 
+```text
+jupyter notebook --allow-root
+```
+
 ![Run jupter notebook by ssh](../Image/2022-05-12-11-29-52.png)
 
 ## Use Browser connect to Jupyter Notebook
