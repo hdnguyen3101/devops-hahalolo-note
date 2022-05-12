@@ -51,7 +51,7 @@ Output sẽ có cảnh bảo `No web browser found: could not locate runnable br
 
 ## Use Powershell on Windows to connect SSH
 
-Mở Powershell trên Windows, sử dụng lệnh SSH với optional -L để chỉ định một cổng nhất định trên host sẽ được chuyển tiếp đến máy chủ và cổng trên remote server.
+Mở Terminal hoặc Powershell trên Windows, sử dụng lệnh SSH với optional -L để chỉ định một cổng nhất định trên host sẽ được chuyển tiếp đến máy chủ và cổng trên remote server.
 Điều này có nghĩa là bất kỳ nội dung nào đang chạy trên cổng được chỉ định trên remote server (8888, cổng mặc định của Jupyter Notebook) sẽ xuất hiện trên cổng được chỉ định trên host (ví dụ cổng 8000).
 
 `ssh -L 8000:localhost:8888 root@10.10.15.87`
