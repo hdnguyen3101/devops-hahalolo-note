@@ -1,6 +1,6 @@
 # Deploy Docker Image to Kubernetes using Jenkins
 
-![Topology](2022-05-17-17-49-14.png)
+![Topology](../Image/2022-05-17-17-49-14.png)
 
 ## Compile code
 
