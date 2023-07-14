@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: 0-core-rest-api
+  name: flight
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: flight
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: flight
+        version: blue
+    spec:
+      containers:
+        - name: flight
+          image: ${docker_image}:${DOCKER_TAG}
+          lifecycle:
+            postStart:
+              exec:
+                command: ["touch", "/tmp/healthy"]
+            preStop:
+              exec:
+                command: ["sleep", "15"]
+          livenessProbe:
+            exec:
+              command: ["cat", "/tmp/healthy"]
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            exec:
+              command: ["cat", "/tmp/healthy"]
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: "2"
+              memory: "8Gi"
+            requests:
+              cpu: "2"
+              memory: "2Gi"
+      tolerations:
+        - key: node.kubernetes.io/node
+          operator: Exists
+          effect: NoSchedule
+      imagePullSecrets:
+        - name: t-registry-be
+
