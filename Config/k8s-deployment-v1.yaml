@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: 0-core-rest-api
+  name: oauth2-srd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth2-srd
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: oauth2-srd
+        version: blue
+    spec:
+      containers:
+        - name: oauth2-srd
+          image: ${docker_image}:${DOCKER_TAG}
+          readinessProbe:
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            periodSeconds: 15
+            successThreshold: 1
+            failureThreshold: 1
+            httpGet:
+              path: /actuator/health
+              port: 8080            
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "30"]
+          resources:
+            limits:
+              cpu: "2"
+              memory: "16Gi"
+            requests:
+              cpu: "0.5"
+              memory: "1Gi"
+      tolerations:
+        - key: node.kubernetes.io/node
+          operator: Equal
+          value: java
+          effect: NoSchedule
+      imagePullSecrets:
+        - name: t-registry-be
+      nodeSelector:
+        kubernetes.io/hostname: t-k8s-2021-worker-11
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: 0-core-rest-api
+  name: oauth2-srd
+  labels:
+    app: oauth2-srd
+    version: blue
+spec:
+  ports:
+  - port: 80
+    name: web
+    targetPort: 8080
+  - port: 8080
+    name: app
+    targetPort: 8080
+  selector:
+    app: oauth2-srd
