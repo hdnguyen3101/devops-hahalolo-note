@@ -1,6 +1,6 @@
 # ***Setup for deep learning development on server Ubuntu 20.04***
 
-> [reference](https://deeplearningcrashcourse.org/setup_ubuntu/)  
+> [reference link](https://deeplearningcrashcourse.org/setup_ubuntu/)  
 
 Full guideline provides tutorial for setup deep learning development environment on Ubuntu 20.04. This guide demonstrates the setup for GPU as well as the python components and software.
 
